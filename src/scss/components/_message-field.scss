@@ -1,0 +1,114 @@
+@import "/src/scss/variables";
+@import "/src/scss/libs/mixins";
+
+.messages-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 61, 50, 0.2);
+    border-radius: 10px;
+
+    &__desc {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-bottom: $line-green;
+    }
+
+    &__name-chat {
+        @include font-base(("Roboto Slab Regular", sans-serif), 32px, normal, 600, 40px, center, $dark-green);
+    }
+
+    &__date {
+        @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 400, 19px, center, $green);
+        min-width: 65px;
+    }
+
+    &__messages {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 250px;
+        max-height: 250px;
+    }
+
+    &__list {
+        min-width: 100%;
+        min-height: 250px;
+        max-height: 250px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    ::-webkit-scrollbar-button {
+        background-repeat: no-repeat;
+        height: 0px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: $background-message;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: linear-gradient(45deg, $green 30%, $green 90%);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: $dark-green;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &__input {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 3fr 1fr;
+        padding: 10px;
+        border-top: $line-green;
+
+        input {
+            @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 500, 19px, left, $black);
+            border-radius: 5px;
+            border-color: $green;
+            padding: 5px;
+        }
+
+        button {
+            @extend input;
+            color: $white;
+            text-align: center;
+            background: $background-body;
+            cursor: pointer;
+            border: $dark-green;
+            padding: 10px 15px;
+
+            &:hover {
+                background-color: darken($background-message, 8%);
+            }
+
+            &:active {
+                background-color: darken($background-message, 24%);
+                transform: translateY(2px);
+            }
+
+            &.disabled {
+                opacity: 0.4;
+                pointer-events: none;
+            }
+        }
+    }
+}

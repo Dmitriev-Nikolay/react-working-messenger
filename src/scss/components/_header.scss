@@ -1,0 +1,26 @@
+@import "/src/scss/variables";
+@import "/src/scss/libs/mixins";
+
+.header {
+  border-bottom: $line-green;
+  padding: 20px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    @include font-base(("Roboto Slab Regular", sans-serif), 48px, normal, 600, 52px, left, $dark-green);
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    display: flex;
+
+    img {
+      margin-left: 15px;
+    }
+  }
+}

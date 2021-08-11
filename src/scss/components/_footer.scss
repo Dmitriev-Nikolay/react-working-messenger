@@ -1,0 +1,45 @@
+@import "/src/scss/variables";
+@import "/src/scss/libs/mixins";
+
+.footer {
+  border-top: $line-green;
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+  }
+
+  &__dev {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    span {
+      @include font-base(("Roboto Slab Regular", sans-serif), 20px, normal, 400, 32px, left, $black, 0 20px 0 0);
+    }
+
+    img {
+      transition: 0.5s;
+      animation: pulse-logo 2s ease-in-out infinite;
+
+      &:hover {
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+@keyframes pulse-logo {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
