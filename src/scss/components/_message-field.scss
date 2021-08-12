@@ -32,22 +32,31 @@
     &__messages {
         width: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 250px;
-        max-height: 250px;
+        min-height: 320px;
+        max-height: 320px;
     }
 
     &__list {
         min-width: 100%;
-        min-height: 250px;
-        max-height: 250px;
+        min-height: 240px;
+        max-height: 240px;
         display: flex;
         flex-direction: column;
         overflow-y: scroll;
         overflow-x: hidden;
         margin-bottom: 20px;
         padding: 10px;
+    }
+
+    &__empty {
+        min-height: 260px;
+        max-height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     ::-webkit-scrollbar-button {
@@ -57,11 +66,11 @@
 
     ::-webkit-scrollbar-track {
         background-color: $background-message;
-        border-radius: 5px;
+        border-radius: $small-5;
     }
 
     ::-webkit-scrollbar-thumb {
-        border-radius: 5px;
+        border-radius: $small-5;
         background: linear-gradient(45deg, $green 30%, $green 90%);
     }
 
@@ -76,16 +85,28 @@
     &__input {
         display: grid;
         gap: 10px;
+        // grid-template-columns: 6fr 1fr 1fr;
         grid-template-columns: 3fr 1fr;
+        align-items: center;
         padding: 10px;
         border-top: $line-green;
+        position: relative;
 
         input {
             @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 500, 19px, left, $black);
-            border-radius: 5px;
+            border-radius: $small-5;
             border-color: $green;
-            padding: 5px;
+            padding: $small-5;
+            height: 100%;
         }
+
+        // .smiles-menu {
+        //     cursor: pointer;
+
+        //     &:hover {
+        //         animation: 0.1s tremor ease-out infinite;
+        //     }
+        // }
 
         button {
             @extend input;
@@ -110,5 +131,20 @@
                 pointer-events: none;
             }
         }
+    }
+}
+
+@keyframes tremor {
+    0%,
+    25% {
+        left: -1px;
+        -webkit-transform: translateX(-3%);
+        transform: translateX(-3%);
+    }
+    50%,
+    100% {
+        left: 1px;
+        -webkit-transform: translateX(3%);
+        transform: translateX(3%);
     }
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { MessageList, MessageInput, Loader } from '../components';
-import { useSelector, useDispatch } from 'react-redux';
+import uuid from 'react-uuid';
 
+import { useSelector, useDispatch } from 'react-redux';
 import { sendMessage } from '../store/actions/messages';
+
+import { MessageList, MessageInput, Loader } from '../components';
 
 const MessagesField = React.memo(({ scroll, scrollToBottom }) => {
     const [currentDate, setCurrentDate] = React.useState(new Date().toLocaleTimeString()); // получаем текущую дату
@@ -21,22 +23,22 @@ const MessagesField = React.memo(({ scroll, scrollToBottom }) => {
     const sendMessages = React.useCallback((message) => {
         if (!message) {
         } else {
-            dispatch(sendMessage(1, 'Николай', inputValue));
+            dispatch(sendMessage(uuid(), 1, 'Николай', message));
             setInputValue('');
             let timerScroll = setTimeout(() => {
                 scrollToBottom();
             }, 0);
             return () => clearTimeout(timerScroll);
         };
-    }, [dispatch, inputValue, scrollToBottom]);
+    }, [dispatch, scrollToBottom]);
 
     const handleClick = (message) => {
-        sendMessages(message);
+        sendMessages(message.trim());
     };
 
     const handleKeyUp = (event, message) => {
         if (event.keyCode === 13) {
-            sendMessages(message);
+            sendMessages(message.trim());
         };
     };
 
@@ -64,20 +66,34 @@ const MessagesField = React.memo(({ scroll, scrollToBottom }) => {
             <section className="messages-field__messages">
                 {
                     isLoaded ?
-                        <MessageList
-                            messages={ messages }
-                            scrollToBottom={ scroll }
-                        />
+                        (
+                            messages.length === 0 ?
+                                <>
+                                    <div className="messages-field__empty">Тебе выпала честь начать чат 😜</div>
+                                    <MessageInput
+                                        value={ inputValue }
+                                        click={ () => handleClick(inputValue) }
+                                        change={ handleChange }
+                                        keyup={ (e) => handleKeyUp(e, inputValue) }
+                                    />
+                                </>
+                                : <>
+                                    <MessageList
+                                        messages={ messages }
+                                        scrollToBottom={ scroll }
+                                    />
+                                    <MessageInput
+                                        value={ inputValue }
+                                        click={ () => handleClick(inputValue) }
+                                        change={ handleChange }
+                                        keyup={ (e) => handleKeyUp(e, inputValue) }
+                                    />
+                                </>
+                        )
                         : <Loader />
                 }
             </section>
-            <MessageInput
-                value={ inputValue }
-                click={ () => handleClick(inputValue) }
-                change={ handleChange }
-                keyup={ (e) => handleKeyUp(e, inputValue) }
-            />
-        </section>
+        </section >
     );
 });
 

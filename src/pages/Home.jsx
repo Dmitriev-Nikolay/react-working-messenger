@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import uuid from 'react-uuid';
 
+import { useDispatch } from 'react-redux';
 import { setMessages } from '../store/actions/messages';
 
 import { Chats, MessagesField } from '../components';
@@ -10,24 +11,28 @@ const options = { hour: 'numeric', minute: 'numeric' };
 
 const mockMessages = [
     {
+        idMessage: uuid(),
         userId: 2,
         userName: 'Артем',
         textMessage: 'Здорово, Колян!',
         dateMsg: new Date().toLocaleTimeString('ru-RU', options),
     },
     {
+        idMessage: uuid(),
         userId: 3,
         userName: 'Анна',
         textMessage: 'Привет, Коль',
         dateMsg: new Date().toLocaleTimeString('ru-RU', options),
     },
     {
+        idMessage: uuid(),
         userId: 4,
         userName: 'Игорек',
         textMessage: 'Оло',
         dateMsg: new Date().toLocaleTimeString('ru-RU', options),
     },
     {
+        idMessage: uuid(),
         userId: 5,
         userName: 'Наташ',
         textMessage: 'Вжух...',

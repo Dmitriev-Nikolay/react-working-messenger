@@ -37,7 +37,7 @@
 }
 
 .circle span:nth-child(1) {
-    filter: blur(5px);
+    filter: blur($small-5);
 }
 
 .circle span:nth-child(2) {

@@ -13,7 +13,7 @@
 
         .message {
             background: $background-message;
-            padding-bottom: 5px;
+            padding-bottom: $small-5;
             border-radius: 45px;
             padding: 10px 30px;
             cursor: pointer;
@@ -24,7 +24,7 @@
 
                 display: flex;
                 justify-content: flex-start;
-                padding: 5px;
+                padding: $small-5;
             }
 
             &__text {
@@ -34,12 +34,12 @@
                     normal,
                     400,
                     14px,
-                    center,
+                    left,
                     $white,
                     0 0 5px 0
                 );
                 max-width: 160px;
-                padding: 5px;
+                padding: $small-5;
                 word-wrap: break-word;
             }
 
@@ -47,6 +47,36 @@
                 display: flex;
                 justify-content: flex-end;
                 @include font-base(("Roboto Slab Regular", sans-serif), 11px, normal, 400, 14px, right);
+            }
+
+            &__edit {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: $small-5;
+
+                textarea {
+                    margin-right: $small-5;
+                    border: none;
+                    resize: none;
+                    min-height: 40px;
+                    padding: $small-5;
+                    border-radius: $small-5;
+                }
+
+                img {
+                    cursor: pointer;
+                }
+
+                ::-webkit-scrollbar-track {
+                    background-color: $green;
+                    border-radius: 0;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    border-radius: $small-5;
+                    background: linear-gradient(45deg, $dark-green 30%, $dark-green 90%);
+                }
             }
         }
 
