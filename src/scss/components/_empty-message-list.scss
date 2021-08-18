@@ -1,0 +1,21 @@
+@import "/src/scss/variables";
+@import "/src/scss/libs/mixins";
+
+.empty-message-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 420px;
+    max-height: 420px;
+
+    &__text {
+        @include font-base(("Roboto Slab Regular", sans-serif), 20px, normal, 400, 32px, center, $black);
+    }
+    
+    img {
+        width: 100%;
+        object-fit: contain;
+    }
+}

@@ -1,19 +1,26 @@
 import React from 'react';
 
-import { Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
+import store from './store/store';
 
 import { Header, Footer } from './components';
-import { Home } from './pages';
+import Router  from './store/router/Router';
 
 const App = () => {
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="content">
-        <Route exact path="/" component={ Home } />
-      </div>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Provider store={ store }>
+        <div className="wrapper">
+          <Header />
+          <div className="content">
+            <Router />
+          </div>
+          <Footer />
+        </div>
+      </Provider>
+    </BrowserRouter>
   );
 };
 

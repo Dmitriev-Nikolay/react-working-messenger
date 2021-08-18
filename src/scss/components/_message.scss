@@ -21,7 +21,6 @@
 
             &__name {
                 @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 500, 19px, center, $dark-green);
-
                 display: flex;
                 justify-content: flex-start;
                 padding: $small-5;

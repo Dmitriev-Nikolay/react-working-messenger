@@ -18,9 +18,11 @@
 
   &__logo {
     display: flex;
+    margin-left: 15px;
+    transition: 0.5s;
 
-    img {
-      margin-left: 15px;
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }

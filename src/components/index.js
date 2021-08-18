@@ -6,6 +6,9 @@ import MessageInput from './MessageInput';
 import Message from './Message';
 import Footer from './Footer';
 import Loader from './Loader';
+import MessageFieldEmpty from './MessageFieldEmpty';
+import Button from './Button';
+import CurrentDate from './CurrentDate';
 
 export {
     Header,
@@ -16,4 +19,7 @@ export {
     Message,
     Footer,
     Loader,
+    MessageFieldEmpty,
+    Button,
+    CurrentDate,
 };

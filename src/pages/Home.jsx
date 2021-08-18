@@ -5,7 +5,7 @@ import uuid from 'react-uuid';
 import { useDispatch } from 'react-redux';
 import { setMessages } from '../store/actions/messages';
 
-import { Chats, MessagesField } from '../components';
+import { Chats, MessagesField, MessageFieldEmpty } from '../components';
 
 const options = { hour: 'numeric', minute: 'numeric' };
 
@@ -40,9 +40,8 @@ const mockMessages = [
     },
 ];
 
-const Home = React.memo(() => {
+const Home = React.memo(({ chatId, chatName }) => {
     const dispatch = useDispatch(); // mapActions
-
     const messageListContainer = React.useRef(null);
 
     const scrollToMyRef = () => {
@@ -53,17 +52,19 @@ const Home = React.memo(() => {
     React.useEffect(() => {
         setTimeout(() => {
             dispatch(setMessages(mockMessages)); // исскуственно сделаем задержку для отображения лоадера
-            scrollToMyRef(); // прокрутим вниз при загрузке всех сообщений
+            // scrollToMyRef(); // прокрутим вниз при загрузке всех сообщений
         }, 3000)
     }, [dispatch]);
 
     return (
         <div className="container">
             <Chats />
-            <MessagesField 
+            { chatId ? <MessagesField 
                 scroll={ messageListContainer } 
                 scrollToBottom={ scrollToMyRef }
-            />
+                chatName={ chatName }
+                chatId={ chatId }
+            /> : <MessageFieldEmpty /> }
         </div>
     );
 });

@@ -82,54 +82,57 @@
         width: 8px;
     }
 
-    &__input {
+    &__send-block {
         display: grid;
-        gap: 10px;
-        // grid-template-columns: 6fr 1fr 1fr;
-        grid-template-columns: 3fr 1fr;
-        align-items: center;
+        grid-template-columns: 10fr 1fr 2fr;
+        width: 100%;
+        gap: 5px;
         padding: 10px;
         border-top: $line-green;
         position: relative;
+    }
 
-        input {
-            @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 500, 19px, left, $black);
-            border-radius: $small-5;
-            border-color: $green;
-            padding: $small-5;
-            height: 100%;
+    &__input {
+        @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 500, 19px, left, $black);
+        border-radius: $small-5;
+        border-color: $green;
+        padding: $small-5;
+    }
+
+    &__smiles-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        img {
+            &:hover {
+                animation: 0.1s tremor ease-out infinite;
+            }
+        }
+    }
+
+    &__button-send {
+        @include font-base(("Roboto Slab Regular", sans-serif), 16px, normal, 500, 19px, center);
+        border: none;
+        border-radius: $small-5;
+        border-color: $green;
+        background: $background-body;
+        cursor: pointer;
+        padding: 10px 15px;
+
+        &:hover {
+            background-color: darken($background-message, 8%);
         }
 
-        // .smiles-menu {
-        //     cursor: pointer;
+        &:active {
+            background-color: darken($background-message, 24%);
+            transform: translateY(2px);
+        }
 
-        //     &:hover {
-        //         animation: 0.1s tremor ease-out infinite;
-        //     }
-        // }
-
-        button {
-            @extend input;
-            color: $white;
-            text-align: center;
-            background: $background-body;
-            cursor: pointer;
-            border: $dark-green;
-            padding: 10px 15px;
-
-            &:hover {
-                background-color: darken($background-message, 8%);
-            }
-
-            &:active {
-                background-color: darken($background-message, 24%);
-                transform: translateY(2px);
-            }
-
-            &.disabled {
-                opacity: 0.4;
-                pointer-events: none;
-            }
+        &.disabled {
+            opacity: 0.4;
+            pointer-events: none;
         }
     }
 }
@@ -138,13 +141,13 @@
     0%,
     25% {
         left: -1px;
-        -webkit-transform: translateX(-3%);
-        transform: translateX(-3%);
+        -webkit-transform: translateX(-2%);
+        transform: translateX(-2%);
     }
     50%,
     100% {
         left: 1px;
-        -webkit-transform: translateX(3%);
-        transform: translateX(3%);
+        -webkit-transform: translateX(2%);
+        transform: translateX(2%);
     }
 }

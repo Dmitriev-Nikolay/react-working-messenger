@@ -23,7 +23,6 @@ const Message = React.memo((props) => {
 
     const deleteCurrentMessage = () => {
         clickDelete(idMessage);
-        console.log(idMessage);
     };
 
     const onAcceptСhangeEdit = () => {
